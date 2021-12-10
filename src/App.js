@@ -1,5 +1,16 @@
+import { Amplify } from 'aws-amplify';
+import { withAuthenticator } from '@aws-amplify/ui-react';
 import logo from './logo.svg';
 import './App.css';
+
+
+Amplify.configure({
+  Auth: {
+    region: 'us-east-1',
+    userPoolId: 'us-east-1_userPool1',
+    userPoolWebClientId: 'client-id'
+  }
+});
 
 function App() {
   return (
@@ -22,4 +33,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
